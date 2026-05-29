@@ -104,13 +104,20 @@
                 yAxis: { 
                     type: 'value', 
                     axisLabel: { formatter: '{value} %' }, 
-                    splitLine: { lineStyle: { color: themeConfigs.gridColor } }, // 网格线颜色自适应
+                    splitLine: { lineStyle: { color: themeConfigs.gridColor } }, 
+                    
+                    // 1. 动态计算最小值
                     min: function (value) {
-                        return (Math.floor(value.min * 10) / 10 - 0.1).toFixed(2);
+                        // 先给最小值加一个极小的偏移量 0.01，再向下寻找最近的 0.1 倍
+                        return (Math.floor((value.min - 0.01) * 10) / 10).toFixed(2);
                     },
+                    
+                    // 2. 动态计算最大值
                     max: function (value) {
-                        return (Math.ceil(value.max * 10) / 10 + 0.1).toFixed(2);
+                        // 先给最大值加一个极小的偏移量 0.01，再向上寻找最近的 0.1 倍
+                        return (Math.ceil((value.max + 0.01) * 10) / 10).toFixed(2);
                     },
+                    
                     interval: 0.1,
                 },
                 series: [
