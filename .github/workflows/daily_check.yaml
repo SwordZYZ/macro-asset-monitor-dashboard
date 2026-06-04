@@ -16,7 +16,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
-        token: Moreton_${{ secrets.RUNNER_PUSH_TOKEN }}
+        token: ${{ secrets.RUNNER_PUSH_TOKEN }}
 
     # 🎯 用下面这段极简本地检测，替代原本会卡死的 uses: astral-sh/setup-uv
     - name: Check and Ensure uv Environment
