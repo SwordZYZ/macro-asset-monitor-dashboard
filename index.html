@@ -238,7 +238,9 @@
                 tooltip: { 
                     trigger: 'axis', 
                     backgroundColor: isDarkMode() ? 'rgba(44, 44, 46, 0.96)' : 'rgba(255, 255, 255, 0.96)',
-                    textStyle: { color: isDarkMode() ? '#fff' : '#000' }
+                    textStyle: { color: isDarkMode() ? '#fff' : '#000' },
+                    // 🎯 新增功能：在悬浮卡片的数值后面追加 % 号
+                    valueFormatter: (value) => value != null ? value.toFixed(2) + '%' : '-- %'
                 },
                 grid: { left: '4%', right: '4%', bottom: '12%', containLabel: true },
                 xAxis: { 
